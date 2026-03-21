@@ -596,8 +596,8 @@ def build_stop_times_for_trip(
         .loc[lambda x: x.stop_id.notna()]
         .assign(
             trip_id=trip_id,
-            dist_to_next=lambda x: x.shape_dist_traveled.diff().shift(-1).fillna(0),
-            weight_to_next=lambda x: x.shape_weight_traveled.diff().shift(-1).fillna(0),
+            dist_to_next=lambda x: x.shape_dist_traveled.diff().shift(-1).fillna(0).astype(float),
+            weight_to_next=lambda x: x.shape_weight_traveled.diff().shift(-1).fillna(0).astype(float),
             speed_to_next=lambda x: (x.weight_to_next / x.dist_to_next).fillna(0),
             duration_to_next=lambda x: (x.dist_to_next / x.speed_to_next).fillna(0),
             arrival_time=lambda x: x.duration_to_next.shift(1).cumsum().fillna(0)
