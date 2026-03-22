@@ -10,7 +10,7 @@ authors = [
 dependencies = [
     "click>=8.1.7",
     "gtfs-kit>=11",
-    "pandera>=0.11.0",
+    "pandera>=0.24.0",
     "pycountry>=19",
 ]
 
