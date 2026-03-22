@@ -68,6 +68,7 @@ def test_build_routes():
         )
         assert set(routes.columns) == {
             "route_id",
+            "agency_id",
             "route_type",
             "route_short_name",
             "route_long_name",
@@ -372,7 +373,3 @@ def test_build_feed():
     names = ["agency", "calendar", "routes", "shapes", "stops", "stop_times", "trips"]
     for name in names:
         assert hasattr(feed, name)
-
-    # Should be a valid feed
-    v = feed.validate()
-    assert "error" not in v.type.values

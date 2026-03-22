@@ -30,6 +30,8 @@ Make GTFS uses the following files to build a GTFS feed.
 - ``meta.csv`` (required). A CSV file containing network metadata.
   The CSV file contains the following columns.
 
+  - ``agency_id`` (required): string; the ID of the transport
+    agency
   - ``agency_name`` (required): string; the name of the transport
     agency
   - ``agency_url`` (required): string; a fully qualified URL for

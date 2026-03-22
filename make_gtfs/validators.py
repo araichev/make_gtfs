@@ -24,6 +24,7 @@ NONBLANK_PATTERN = r"(?!\s*$).+"
 # ProtoFeed table schemas
 SCHEMA_META = pa.DataFrameSchema(
     {
+        "agency_id": pa.Column(str, pa.Check.str_matches(NONBLANK_PATTERN), unique=True),
         "agency_name": pa.Column(str, pa.Check.str_matches(NONBLANK_PATTERN)),
         "agency_url": pa.Column(str, pa.Check.str_matches(URL_PATTERN)),
         "agency_timezone": pa.Column(str, pa.Check.isin(TIMEZONES)),

@@ -9,8 +9,9 @@ authors = [
 ]
 dependencies = [
     "click>=8.1.7",
-    "gtfs-kit>=8",
+    "gtfs-kit>=11",
     "pandera>=0.11.0",
+    "pycountry>=19",
 ]
 
 [build-system]
@@ -23,8 +24,8 @@ packages = ["make_gtfs"]
 [project.scripts]
 make_gtfs = "make_gtfs.cli:make_gtfs"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest>=6.2.5",
     "jupyter>=1.0.0",
     "pre-commit-uv>=0",
