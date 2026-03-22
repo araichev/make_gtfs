@@ -74,7 +74,7 @@ Make GTFS uses the following files to build a GTFS feed.
   - ``route_long_name`` (required): string; full name of the route
     that is more descriptive than ``route_short_name``
   - ``route_type`` (required): integer; the
-    `GTFS type of the route <https://developers.google.com/transit/gtfs/reference/#routestxt>`_
+    `GTFS type of the route <https://gtfs.org/documentation/schedule/reference/#routestxt>`_
   - ``service_window_id`` (required): string; a service window ID
     for the route taken from the file ``service_windows.csv``
   - ``direction`` (required): 0, 1, or 2; indicates
@@ -108,7 +108,7 @@ Make GTFS uses the following files to build a GTFS feed.
 
 - ``stops.csv`` (optional). A CSV file containing all the required
   and optional fields of ``stops.txt`` in
-  `the GTFS <https://developers.google.com/transit/gtfs/reference/#stopstxt>`_.
+  `the GTFS <https://gtfs.org/documentation/schedule/reference/#stopstxt>`_.
 
 
 
@@ -127,7 +127,7 @@ Basically,
   Assign stops to each trip as follows.
   Collect all stops in the built file ``stops.txt`` that are within a fixed distance of the traffic side (e.g. the right hand side for USA agency timezones and the left hand side for New Zealand agency timezones) of the trip shape.
   If the trip has no nearby stops, then do not make stop times for that trip.
-- Once validated, write these files to disk by running command ``feed.write("gtfsfile.zip")``.
+- Once validated, write these files to disk by running command ``feed.to_file("gtfsfile.zip")``.
 
 
 Examples
@@ -137,7 +137,7 @@ See ``data/auckland`` for example files and play with the Jupyter notebook at ``
 
 Documentation
 ===============
-On Github pages `here <https://mrcagney.github.io/make_gtfs_docs>`_.
+On Github pages `here <https://araichev.github.io/make_gtfs_docs>`_.
 
 
 Notes
