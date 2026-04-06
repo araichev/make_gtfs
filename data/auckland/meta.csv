@@ -1,2 +1,2 @@
-agency_name,agency_url,agency_timezone,start_date,end_date,speed_route_type_3,speed_route_type_7
-Auckland Transport,"https://at.govt.nz/",Pacific/Auckland,20140101,20150101,20,30
+agency_id,agency_name,agency_url,agency_timezone,start_date,end_date,speed_route_type_3,speed_route_type_7
+AT,Auckland Transport,"https://at.govt.nz/",Pacific/Auckland,20140101,20150101,20,30

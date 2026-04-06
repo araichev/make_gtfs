@@ -30,6 +30,8 @@ Make GTFS uses the following files to build a GTFS feed.
 - ``meta.csv`` (required). A CSV file containing network metadata.
   The CSV file contains the following columns.
 
+  - ``agency_id`` (required): string; the ID of the transport
+    agency
   - ``agency_name`` (required): string; the name of the transport
     agency
   - ``agency_url`` (required): string; a fully qualified URL for
@@ -72,7 +74,7 @@ Make GTFS uses the following files to build a GTFS feed.
   - ``route_long_name`` (required): string; full name of the route
     that is more descriptive than ``route_short_name``
   - ``route_type`` (required): integer; the
-    `GTFS type of the route <https://developers.google.com/transit/gtfs/reference/#routestxt>`_
+    `GTFS type of the route <https://gtfs.org/documentation/schedule/reference/#routestxt>`_
   - ``service_window_id`` (required): string; a service window ID
     for the route taken from the file ``service_windows.csv``
   - ``direction`` (required): 0, 1, or 2; indicates
@@ -106,7 +108,7 @@ Make GTFS uses the following files to build a GTFS feed.
 
 - ``stops.csv`` (optional). A CSV file containing all the required
   and optional fields of ``stops.txt`` in
-  `the GTFS <https://developers.google.com/transit/gtfs/reference/#stopstxt>`_.
+  `the GTFS <https://gtfs.org/documentation/schedule/reference/#stopstxt>`_.
 
 
 
@@ -125,7 +127,7 @@ Basically,
   Assign stops to each trip as follows.
   Collect all stops in the built file ``stops.txt`` that are within a fixed distance of the traffic side (e.g. the right hand side for USA agency timezones and the left hand side for New Zealand agency timezones) of the trip shape.
   If the trip has no nearby stops, then do not make stop times for that trip.
-- Once validated, write these files to disk by running command ``feed.write("gtfsfile.zip")``.
+- Once validated, write these files to disk by running command ``feed.to_file("gtfsfile.zip")``.
 
 
 Examples
@@ -135,7 +137,7 @@ See ``data/auckland`` for example files and play with the Jupyter notebook at ``
 
 Documentation
 ===============
-On Github pages `here <https://mrcagney.github.io/make_gtfs_docs>`_.
+On Github pages `here <https://araichev.github.io/make_gtfs_docs>`_.
 
 
 Notes
@@ -148,6 +150,19 @@ Notes
 
 Changes
 ========
+
+4.2.0, 2026-04-07
+-----------------
+- Updated to reflect ``gtfs_kit`` API changes:
+  * Replaced ``timestr_to_seconds(x, inverse=True)`` with ``seconds_to_timestr(x)``.
+  * Replace ``feed.write()`` to ``feed.to_file()``.
+  * Removed ``feed.validate()``.
+  * Added ``'agency_id'`` to fix ``KeyError`` in ``feed.drop_zombies()``.
+  * Added Pycountry dependency that was removed from ``gtfs_kit``.
+- Fixed ``ZeroDivisionError`` and ``ChainedAssignmentError`` with Pandas 3.
+- Fixed ``FutureWarning with pandera>=0.24.0``.
+- Fixed deprecated ``tool.uv.dev-dependencies`` warning.
+- Fixed broken link in README.
 
 4.1.1, 2024-12-20
 -----------------

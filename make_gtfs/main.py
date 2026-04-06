@@ -45,6 +45,7 @@ def build_agency(pfeed: pf.ProtoFeed) -> pd.DataFrame:
     """
     return pd.DataFrame(
         {
+            "agency_id": pfeed.meta["agency_id"].iat[0],
             "agency_name": pfeed.meta["agency_name"].iat[0],
             "agency_url": pfeed.meta["agency_url"].iat[0],
             "agency_timezone": pfeed.meta["agency_timezone"].iat[0],
@@ -112,6 +113,8 @@ def build_routes(pfeed: pf.ProtoFeed) -> pd.DataFrame:
 
     # Create route IDs
     f["route_id"] = "r" + f["route_short_name"].map(str)
+
+    f["agency_id"] = pfeed.meta["agency_id"].iat[0]
 
     del f["shape_id"]
 
@@ -593,8 +596,8 @@ def build_stop_times_for_trip(
         .loc[lambda x: x.stop_id.notna()]
         .assign(
             trip_id=trip_id,
-            dist_to_next=lambda x: x.shape_dist_traveled.diff().shift(-1).fillna(0),
-            weight_to_next=lambda x: x.shape_weight_traveled.diff().shift(-1).fillna(0),
+            dist_to_next=lambda x: x.shape_dist_traveled.diff().shift(-1).fillna(0).astype(float),
+            weight_to_next=lambda x: x.shape_weight_traveled.diff().shift(-1).fillna(0).astype(float),
             speed_to_next=lambda x: (x.weight_to_next / x.dist_to_next).fillna(0),
             duration_to_next=lambda x: (x.dist_to_next / x.speed_to_next).fillna(0),
             arrival_time=lambda x: x.duration_to_next.shift(1).cumsum().fillna(0)
@@ -747,7 +750,7 @@ def build_stop_times(
         # Convert seconds back to time strings
         f[["arrival_time", "departure_time"]] = f[
             ["arrival_time", "departure_time"]
-        ].map(lambda x: gk.timestr_to_seconds(x, inverse=True))
+        ].map(lambda x: gk.seconds_to_timestr(x))
 
     # Free memory
     _build_stop_times_for_trip.cache_clear()
