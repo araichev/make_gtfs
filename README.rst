@@ -151,6 +151,19 @@ Notes
 Changes
 ========
 
+4.2.0, 2026-04-07
+-----------------
+- Updated to reflect ``gtfs_kit`` API changes:
+  * Replaced ``timestr_to_seconds(x, inverse=True)`` with ``seconds_to_timestr(x)``.
+  * Replace ``feed.write()`` to ``feed.to_file()``.
+  * Removed ``feed.validate()``.
+  * Added ``'agency_id'`` to fix ``KeyError`` in ``feed.drop_zombies()``.
+  * Added Pycountry dependency that was removed from ``gtfs_kit``.
+- Fixed ``ZeroDivisionError`` and ``ChainedAssignmentError`` with Pandas 3.
+- Fixed ``FutureWarning with pandera>=0.24.0``.
+- Fixed deprecated ``tool.uv.dev-dependencies`` warning.
+- Fixed broken link in README.
+
 4.1.1, 2024-12-20
 -----------------
 - Added the missing Click dependency.
