@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Make GTFS |version| documentation
-=====================================
+Make Make GTFS |version| documentation
+=======================================
 
 .. toctree::
    :maxdepth: 2
