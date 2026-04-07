@@ -187,6 +187,8 @@ def read_protofeed(path: str | pl.Path) -> ProtoFeed:
     - ``meta.csv`` (required). A CSV file containing network metadata.
       The CSV file contains the columns
 
+      - ``agency_id`` (required): string; the ID of the transport
+        agency
       - ``agency_name`` (required): string; the name of the transport
         agency
       - ``agency_url`` (required): string; a fully qualified URL for

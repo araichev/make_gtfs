@@ -1,4 +1,4 @@
-import pandera as pa
+import pandera.pandas as pa
 import pandas as pd
 
 from .context import make_gtfs, DATA_DIR, pytest
@@ -53,7 +53,7 @@ def test_check_shapes():
     assert mg.check_shapes(pfeed).shape[0]
 
     pfeed = sample.copy()
-    pfeed.shapes.geometry.iat[0] = None
+    pfeed.shapes.loc[pfeed.shapes.index[0], "geometry"] = None
     with pytest.raises(pa.errors.SchemaError):
         mg.check_shapes(pfeed)
 
@@ -90,7 +90,7 @@ def test_check_service_windows():
         "end_time",
     ]:
         pfeed = sample.copy()
-        pfeed.service_windows[col].iat[0] = -5
+        pfeed.service_windows.loc[pfeed.service_windows.index[0], col] = "-5" if col in ("start_time", "end_time") else -5
         with pytest.raises(pa.errors.SchemaError):
             mg.check_service_windows(pfeed)
 
@@ -133,7 +133,7 @@ def test_check_stops():
         mg.check_stops(pfeed)
 
     pfeed = sample.copy()
-    pfeed.stops.stop_id.iat[0] = ""
+    pfeed.stops.loc[pfeed.stops.index[0], "stop_id"] = ""
     with pytest.raises(pa.errors.SchemaError):
         mg.check_stops(pfeed)
 
@@ -149,7 +149,7 @@ def test_check_speed_zones():
 
     # Set bad route type
     pfeed = sample.copy()
-    pfeed.speed_zones["route_type"].iat[0] = -2
+    pfeed.speed_zones.loc[pfeed.speed_zones.index[0], "route_type"] = -2
     with pytest.raises(pa.errors.SchemaError):
         mg.check_speed_zones(pfeed)
 

@@ -1,6 +1,6 @@
 [project]
 name = "make-gtfs"
-version = "4.1.0"
+version = "4.2.0"
 description = "A Python 3.10+ library to build GTFS feeds from basic route information."
 requires-python = ">=3.10"
 license = "MIT"
@@ -8,33 +8,33 @@ authors = [
     { name = "Alexander Raichev", email = "araichev@mrcagney.com" },
 ]
 dependencies = [
-    "gtfs-kit>=8",
-    "pandera>=0.11.0",
+    "click>=8.1.7",
+    "gtfs-kit>=11",
+    "pandera>=0.24.0",
+    "pycountry>=19",
+    "pytz>=2026.1.post1",
 ]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.setuptools]
+[tool.hatch.build.targets.wheel]
 packages = ["make_gtfs"]
 
 [project.scripts]
 make_gtfs = "make_gtfs.cli:make_gtfs"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest>=6.2.5",
-    "jupyter>=1.0.0",
     "pre-commit-uv>=0",
     "Sphinx>=5.0.2",
-    "publish-sphinx-docs>=1.0.3",
-    "black>=22",
     "ruff>=0.0.259",
-    "nbstripout>=0.6.1",
+    "marimo>=0.22.4",
 ]
 
-[tool.pytest.pytest.ini_options]
+[tool.pytest.ini_options]
 markers = [
     "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "serial",
@@ -44,5 +44,5 @@ markers = [
 # Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
 lint.select = ["E", "F"]
 lint.ignore = ["E501", "E731", "F401", "F403"]
-exclude = ["*.ipynb"]
+exclude = ["notebooks/*.py"]
 

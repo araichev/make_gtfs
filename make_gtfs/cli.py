@@ -85,4 +85,4 @@ def make_gtfs(
         num_stops_per_shape=num_stops_per_shape,
         stop_spacing=stop_spacing,
     )
-    feed.write(target_path, ndigits=num_digits)
+    feed.to_file(target_path, ndigits=num_digits)
