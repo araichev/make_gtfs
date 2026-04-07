@@ -17,7 +17,6 @@ Here are instructions if you're using UV for Python dependency management.
 To use as a library in your own project, install as a dependency via  ``uv add make_gtfs``.
 To develop the ``make_gtfs`` repo, Git clone it, then run ``uv add make_gtfs``.
 
-If you're using Poetry or another dependency management program then change the UV commands above accordingly.
 
 Usage
 =====
@@ -132,7 +131,7 @@ Basically,
 
 Examples
 =========
-See ``data/auckland`` for example files and play with the Jupyter notebook at ``notebooks/examples.ipynb``.
+See ``data/auckland`` for example files and play with the Marimo notebook at ``notebooks/examples.py``.
 
 
 Documentation
@@ -148,12 +147,17 @@ Notes
 - Thanks to `MRCagney <https://mrcagney.com>`_ for periodically funding this project.
 
 
+Maintainer Notes
+================
+- After pushing to master, update the published docs via ``uv run make -C docs publish-docs-github``
+
+
 Changes
 ========
 
 4.2.0, 2026-04-07
 -----------------
-- Updated to reflect ``gtfs_kit`` API changes:
+- Updated to reflect ``gtfs_kit`` API changes, thanks to user deton and `pull request 4 <https://github.com/araichev/make_gtfs/pull/4>`__:
   * Replaced ``timestr_to_seconds(x, inverse=True)`` with ``seconds_to_timestr(x)``.
   * Replace ``feed.write()`` to ``feed.to_file()``.
   * Removed ``feed.validate()``.
@@ -163,6 +167,7 @@ Changes
 - Fixed ``FutureWarning with pandera>=0.24.0``.
 - Fixed deprecated ``tool.uv.dev-dependencies`` warning.
 - Fixed broken link in README.
+- Updated Makefile for docs.
 
 4.1.1, 2024-12-20
 -----------------
