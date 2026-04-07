@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
-DOCS_REMOTE   = git@github.com:araichev/make_gtfs_kit_docs
+DOCS_REMOTE   = git@github.com:araichev/make_gtfs_docs
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
