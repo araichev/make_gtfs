@@ -1,14 +1,14 @@
-> [!IMPORTANT]
-> **This repository has moved.**
-> Because GitHub's performance has degraded significantly, this repository has moved to Forgejo. Active development continues at **https://git.disroot.org/mrcagney/make_gtfs**.
-> This GitHub copy is archived and will not receive updates, issues, or pull requests.
-> Please file issues and submit changes on Forgejo.
+[!IMPORTANT]
+**This repository has moved.**
+Because GitHub's performance has degraded significantly, this repository has moved to Forgejo. Active development continues at **https://git.disroot.org/araichev/make_gtfs**.
+This GitHub copy is archived and will not receive updates, issues, or pull requests.
+Please file issues and submit changes on Forgejo.
 
 ---
 
 Make GTFS
 ***********
-.. image:: https://github.com/mrcagney/gtfs_kit/actions/workflows/test.yml/badge.svg
+.. image:: https://github.com/araichev/gtfs_kit/actions/workflows/test.yml/badge.svg
 
 A Python 3.10+ library to build GTFS feeds from basic route information.
 Inspired by Conveyal's `geom2gtfs <https://github.com/conveyal/geom2gtfs>`_.
