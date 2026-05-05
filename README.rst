@@ -1,3 +1,12 @@
+[!IMPORTANT]
+
+**This repository has moved to Codeberg, because Github is deteriorating**.
+
+Development continues at **https://codeberg.org/araichev/make_gtfs**, so please file issues, pull requests, etc. there.
+This GitHub repository is archived.
+
+---
+
 Make GTFS
 ***********
 .. image:: https://github.com/araichev/gtfs_kit/actions/workflows/test.yml/badge.svg
